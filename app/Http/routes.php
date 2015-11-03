@@ -11,6 +11,36 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "Login\LoginController@index");
+Route::get('/login/create', "Login\LoginController@create");
+Route::post('/login/store', "Login\LoginController@store");
+Route::post('/login/autenticar', "Login\LoginController@autenticar");
+Route::get('/logout', "Login\LoginController@logout");
+
+// RUTAS PARA EL MANEJO DE ERRORES
+Route::get("/errorcultivo","ErrorController@cultivoActivo");
+
+
+// RUTAS PARA MANEJAR CULTIVO
+
+Route::resource("cultivo","CultivoController");
+ // RUTAS EXTRAS CULTIVO
+Route::get('/cultivo/iniciar/{id}', "CultivoController@iniciar");
+Route::get('/cultivo/terminar/{id}', "CultivoController@terminar");
+Route::get('/cultivo/aplicar/{id}', "CultivoController@aplicar");
+Route::get('/cultivo/nuevamaleza/{maleza}/{cultivo}', "CultivoController@nuevaMaleza");
+
+
+
+// RUTAS PARA MANEJAR Activos
+
+Route::resource("activo","ActivoController");
+
+Route::get("/activo/activosmaleza/{idmaleza}","ActivoController@activosmaleza");
+
+
+//RUTAS PARA MANEJAR MEDIDAS
+
+Route::resource("medida","MedidaController");
+
+
