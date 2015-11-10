@@ -58,6 +58,8 @@ var Mensajes = function(){
          if(tipo == "correcto"){
              color = "green";
          }
+
+
          var mensaje = "<ul style='color:"+color+";'>";
          for(var i = 0; i < array.length; i++){
              mensaje += "<li>"+array[i]+"</li>";

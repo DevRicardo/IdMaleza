@@ -44,3 +44,17 @@ Route::get("/activo/activosmaleza/{idmaleza}","ActivoController@activosmaleza");
 Route::resource("medida","MedidaController");
 
 
+
+//RUTAS PARA LA BUSQUEDA
+Route::get("/busqueda", "BusquedaController@index");
+Route::post("/busqueda/all", "BusquedaController@buscar");
+Route::get("/busqueda", "BusquedaController@index");
+Route::get("/busqueda/detalle/{id}", "BusquedaController@show");
+
+
+
+//RUTAS PARA MANEJAR MALEZA
+Route::get("maleza/imagen","MalezaController@cargarImagenes");
+Route::post("maleza/addfoto", "MalezaController@addfoto");
+
+

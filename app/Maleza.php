@@ -20,10 +20,13 @@ class Maleza extends Model
     }
 
 
-
-
     public function activos()
     {
         return $this->belongsToMany("App\Activo");
+    }
+
+
+    public function fotos(){
+        return $this->hasMany("App\Foto");
     }
 }

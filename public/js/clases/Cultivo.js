@@ -62,7 +62,7 @@ var Cultivo = function(){
              var contenido = '<option value="">Seleccionar maleza predominante</option>';
             for(var i = 0; i < data.length; i++){
                 var activo = data[i];
-                contenido += '<option value="'+activo.nombre_cultivo+'">'+activo.nombre_activo+'</option>';
+                contenido += '<option value="'+activo.nombre_activo+'">'+activo.nombre_activo+'</option>';
             }
 
 

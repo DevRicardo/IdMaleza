@@ -19,4 +19,19 @@ var Consulta = function(){
 
 
 
+    this.consultaFile = function(data, url, tipo){
+        var request = $.ajax({
+            url: url,
+            type: tipo,
+            data: data,
+            contentType:false,
+            processData:false,
+            cache:false
+
+
+        });
+
+        return  request;
+    }
+
 }

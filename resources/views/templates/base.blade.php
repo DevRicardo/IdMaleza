@@ -53,7 +53,7 @@
         <div class="mdl-layout__header-row">
             <span class="mdl-layout-title">IDMaleza</span>
             <div class="mdl-layout-spacer"></div>
-            <a class="mdl-button mdl-js-button mdl-button--primary">
+            <a href="/busqueda?tipo=invitado" class="mdl-button mdl-js-button mdl-button--primary">
                 BUSQUEDA RAPIDA
             </a>
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Foto;
+use App\Maleza;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -83,5 +85,40 @@ class MalezaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function cargarImagenes(Request $request)
+    {
+
+        $malezas = Maleza::all();
+
+        return view("maleza.new_maleza")->with("parametros",array("malezas"=>$malezas));
+
+    }
+
+
+    public function addfoto(Request $request){
+
+        $dir = "img/maleza";
+        $maleza = $request->maleza;
+        $tipo = $request->tipo;
+        $imagenes = $request->file();
+
+        foreach($imagenes AS $imagen){
+
+            $nuevo_nombre = $this->uploadImagen($imagen, $dir);
+            if( is_file($dir."/".$nuevo_nombre) ) {
+                $foto = new Foto();
+                $foto->ruta = $dir."/".$nuevo_nombre;
+                $foto->maleza_id = $maleza;
+                $foto->tipo = $tipo;
+                $foto->save();
+            }
+        }
+
+        return redirect("/maleza/imagen");
+
+
     }
 }

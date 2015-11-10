@@ -65,5 +65,19 @@ abstract class Controller extends BaseController
         return ceil($daysForExtraCoding/7);
     }
 
+    public function uploadImagen($file,$dir){
+
+        $ext            = $file->getClientOriginalExtension();
+        $name           = $file->getClientOriginalName();
+        $hash           = md5($name);
+        $nuevo_nombre = $hash.'.'.$ext;
+
+        $file->move($dir,$nuevo_nombre);
+
+
+        return $nuevo_nombre;
+
+    }
+
 
 }
