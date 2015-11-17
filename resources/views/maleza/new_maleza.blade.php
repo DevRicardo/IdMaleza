@@ -1,4 +1,4 @@
-@extends("templates.base")
+@extends("templates.administrador")
 
 
 @section("section")
@@ -8,21 +8,22 @@
 
     <!-- Simple Textfield -->
     {!! Form::open(array('url' => 'maleza/addfoto', 'method' => 'post', "enctype"=>"multipart/form-data")) !!}
-    <h4 style="text-align:center;">Cargador de imagenes</h4>
-
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp mdl-color--amber" style="width: 100%; min-height: 40px;">
-
-        <div class="mdl-card__supporting-text">
-            Cargue las imágenes para la comparación o para mostrar,
-            esto lo puede definir
-            seleccionando de la lista tipo del formulario
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col" style="text-align: right;">
+            <a href="/admin/fotos/{!! $id_maleza !!}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                Fotos de la maleza
+            </a>
         </div>
 
 
     </div>
+    <h4 style="text-align:center;">Cargador de imagenes</h4>
+
+    @include("partial.mensaje")
+
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--full-width">
-        <select class="mdl-textfield__input" id="maleza" name="maleza">
+        <select class="mdl-textfield__input" id="maleza" name="maleza" required>
             <option value="">Seleccione la maleza</option>
             @foreach($parametros['malezas'] AS $maleza)
                 <option value="{!! $maleza->id !!}">{!! $maleza->nombre_comun !!}</option>
@@ -32,7 +33,7 @@
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--full-width">
-        <select class="mdl-textfield__input" id="tipo" name="tipo">
+        <select class="mdl-textfield__input" id="tipo" name="tipo" required>
             <option value="">Seleccione el tipo de imagen</option>
             <option value="COMPARABLES">COMPARABLES</option>
             <option value="PARA MOSTRAR">PARA MOSTRAR</option>
@@ -88,5 +89,7 @@
 
 
 @section('script')
+
+    $("#maleza").val({!! $id_maleza !!})
 
 @endsection

@@ -22,7 +22,7 @@ class Maleza extends Model
 
     public function activos()
     {
-        return $this->belongsToMany("App\Activo");
+        return $this->belongsToMany("App\Activo","activo_maleza","maleza_id","activo_id");
     }
 
 

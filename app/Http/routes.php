@@ -57,4 +57,21 @@ Route::get("/busqueda/detalle/{id}", "BusquedaController@show");
 Route::get("maleza/imagen","MalezaController@cargarImagenes");
 Route::post("maleza/addfoto", "MalezaController@addfoto");
 
+Route::get("maleza/create","MalezaController@create");
+Route::post("maleza/store", "MalezaController@store");
+Route::get("foto/eliminar/{id}","MalezaController@eliminar");
+
+
+//RUTAS PARA EL ADMINISTRADOR
+Route::get("admin","AdminController@index");
+Route::get("admin/fotos/{id}","AdminController@fotos");
+Route::get("admin/activos/{id}","AdminController@activos");
+Route::get("admin/asociar/{id_activo}/{id_maleza}", "AdminController@asociar");
+Route::get("admin/desasociar/{id_activo}/{id_maleza}", "AdminController@desasociar");
+Route::get("admin/nueva", "AdminController@nueva");
+Route::get("admin/editar/{id}", "AdminController@edit");
+Route::post("admin/actualizar/{id}", "AdminController@update");
+Route::get("admin/destroy/{id}", "AdminController@destroy");
+
+
 

@@ -51,7 +51,7 @@
 <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
     <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">IDMaleza</span>
+            <span class="mdl-layout-title">{!! Html::image('img/sistema/logo.png','Imagen no encontrada',array("width"=>"100"))!!}</span>
             <div class="mdl-layout-spacer"></div>
             <a href="/busqueda?tipo=invitado" class="mdl-button mdl-js-button mdl-button--primary">
                 BUSQUEDA RAPIDA

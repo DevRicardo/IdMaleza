@@ -14,7 +14,7 @@ class Activo extends Model
 
     {
 
-        return $this->belongsToMany('App\Maleza');
+        return $this->belongsToMany('App\Maleza',"activo_maleza","activo_id","maleza_id");
 
     }
 

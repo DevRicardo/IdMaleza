@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class MalezaController extends Controller
 {
@@ -29,6 +30,8 @@ class MalezaController extends Controller
     public function create()
     {
         //
+        return view("maleza.create");
+
     }
 
     /**
@@ -40,6 +43,15 @@ class MalezaController extends Controller
     public function store(Request $request)
     {
         //
+        $maleza = new Maleza();
+        $maleza->nombre_comun = $request->nombre_comun;
+        $maleza->nombre_cientifico = $request->nombre_cientifico;
+        $maleza->familia = $request->familia;
+        $maleza->detalle = $request->detalle;
+        $maleza->save();
+
+        Session::flash("mensaje",["contenido"=>"Registro Correcto", "color" => "green"]);
+        return redirect()->back();
     }
 
     /**
@@ -93,7 +105,7 @@ class MalezaController extends Controller
 
         $malezas = Maleza::all();
 
-        return view("maleza.new_maleza")->with("parametros",array("malezas"=>$malezas));
+        return view("maleza.new_maleza")->with("parametros",array("malezas"=>$malezas))->with("id_maleza",Session::get("id_maleza"));
 
     }
 
@@ -108,6 +120,7 @@ class MalezaController extends Controller
         foreach($imagenes AS $imagen){
 
             $nuevo_nombre = $this->uploadImagen($imagen, $dir);
+
             if( is_file($dir."/".$nuevo_nombre) ) {
                 $foto = new Foto();
                 $foto->ruta = $dir."/".$nuevo_nombre;
@@ -116,9 +129,20 @@ class MalezaController extends Controller
                 $foto->save();
             }
         }
+        Session::flash("mensaje",["contenido"=>"Registro Correcto", "color" => "green"]);
+        Session::flash("id_maleza",$maleza);
+        return redirect("/maleza/imagen?id=".$maleza);
 
-        return redirect("/maleza/imagen");
+
+    }
+
+    public function eliminar($id){
+
+        $foto = Foto::find($id);
+        $foto->delete();
 
 
+        Session::flash("mensaje",["contenido"=>"La foto se elimino con exito", "color" => "green"]);
+        return redirect()->back();
     }
 }

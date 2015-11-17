@@ -116,8 +116,9 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--full-width">
                                 <select class="mdl-textfield__input" id="maleza" name="maleza" onchange="cultivo.maleza(this.value,'{!! $cultivo->id !!}')">
                                     <option style="color: #000;" value="">Seleccione Maleza</option>
-                                    <option style="color: #000;" value="1">Coquito</option>
-
+                                    @foreach($semana[3] AS $valor)
+                                    <option style="color: #000;" value="{!! $valor->id !!}">{!! $valor->nombre_comun !!}</option>
+                                    @endforeach
                                 </select>
 
                             </div>

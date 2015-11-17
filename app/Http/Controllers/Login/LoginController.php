@@ -139,10 +139,17 @@ class LoginController extends Controller
 
        if($this->authAux($request))
         {
+            $rol = Session::get("rol");
+
+            if($rol == 1){
+
+                return redirect("admin");
+            }
             return redirect("cultivo");
 
         }else
         {
+            Session::flash("mensaje",["contenido"=>"Datos incorrectos", "color" => "red"]);
             return redirect()->back();
         }
 

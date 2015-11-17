@@ -64,8 +64,8 @@
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header">
-        <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">.:IdMaleza:.</span>
+        <div class="mdl-layout__header-row" style="background-color: #FFF;">
+            <span class="mdl-layout-title">{!! Html::image('img/sistema/logo.png','Imagen no encontrada',array("width"=>"100"))!!}</span>
             <div class="mdl-layout-spacer"></div>
 
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
@@ -97,7 +97,7 @@
             <a style="display: none;" id="cultivo" class="mdl-navigation__link" href="/cultivo?h=0"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">reorder</i>Cultivo actual</a>
             <a class="mdl-navigation__link" href="/cultivo/create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add</i>Nuevo Cultivo</a>
             <a class="mdl-navigation__link" href="/cultivo?h=1"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Historico</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">search</i>Busqueda rapida</a>
+            <a class="mdl-navigation__link" href="/busqueda?tipo=admin"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">search</i>Busqueda rapida</a>
 
             <a class="mdl-navigation__link" href="/logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">power</i>Salir</a>
 

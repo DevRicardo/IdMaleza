@@ -65,14 +65,20 @@ class BusquedaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         //
 
         $maleza = Maleza::find($id);
         $activos = $maleza->activos()->get();
 
-        return view("busqueda.detalle")->with("parametros",array("maleza"=>$maleza, "activos"=>$activos));
+        if(isset($request->tipo) && $request->tipo == "admin"){
+            return view("busqueda.detalle_admin")->with("parametros",array("maleza"=>$maleza, "activos"=>$activos));
+        }else{
+            return view("busqueda.detalle")->with("parametros",array("maleza"=>$maleza, "activos"=>$activos));
+        }
+
+
     }
 
     /**
@@ -130,34 +136,48 @@ class BusquedaController extends Controller
             $array_porcentaje = array();
             $array_imagenes = array();
 
-           foreach($fotos AS $foto){
 
-               $f1 = $foto->ruta;
-               $f2 = $dir."/".$nuevo_nombre;
+if(!empty($fotos[0])) {
+    foreach ($fotos AS $foto) {
 
-               $hash       = $this->getHash_img($f1);
-               $dif        = $this->comparar_imgs($f1,$f2);
+        $f1 = $foto->ruta;
+        $f2 = $dir . "/" . $nuevo_nombre;
 
-               $diferencia = (100-$dif);
+        $hash = $this->getHash_img($f1);
+        $dif = $this->comparar_imgs($f1, $f2);
 
-               $array_porcentaje[] = $diferencia;
-               $array_imagenes[] = $f1;
+        $diferencia = (100 - $dif);
+
+        $array_porcentaje[] = $diferencia;
+        $array_imagenes[] = $f1;
 
 
-
-           }
-            $array_resultados_nombres[$maleza->id] = array("comun"=>$maleza->nombre_comun, "cientifico"=>$maleza->nombre_cientifico);
-            $array_resultados_img[$maleza->id] = $array_imagenes;
-            $array_resultados[$maleza->id] = max($array_porcentaje);
+    }
+    $array_resultados_nombres[$maleza->id] = array("comun" => $maleza->nombre_comun, "cientifico" => $maleza->nombre_cientifico);
+    $array_resultados_img[$maleza->id] = $array_imagenes;
+    //$array_resultados[$maleza->id] = (array_sum($array_porcentaje) / count($array_porcentaje));
+    $array_resultados[$maleza->id] = max($array_porcentaje);
+}
 
         }
         arsort($array_resultados);
 
-        return view("busqueda.resultado_invitado")->with("parametros", array(
-            "porcentajes"=> $array_resultados,
-            "imagenes" => $array_resultados_img,
-            "nombres" => $array_resultados_nombres
-        ));
+
+        if(isset($request->tipo) && $request->tipo == "admin"){
+            return view("busqueda.resultado_admin")->with("parametros", array(
+                "porcentajes"=> $array_resultados,
+                "imagenes" => $array_resultados_img,
+                "nombres" => $array_resultados_nombres
+            ));
+        }else{
+            return view("busqueda.resultado_invitado")->with("parametros", array(
+                "porcentajes"=> $array_resultados,
+                "imagenes" => $array_resultados_img,
+                "nombres" => $array_resultados_nombres
+            ));
+        }
+
+
     }
 
 
@@ -175,10 +195,10 @@ class BusquedaController extends Controller
     {
         $img_original	   = null;
 
-        if ($type=='png')
+        if ($type=='png' || $type == "PNG")
             $img_original 	   = imagecreatefrompng($file);
 
-        if ($type=='jpg')
+        if ($type=='jpg' || $type =="JPG")
             $img_original 	   = imagecreatefromjpeg($file);
 
         $max_ancho    	   = $w;

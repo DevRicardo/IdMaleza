@@ -175,12 +175,13 @@ class CultivoController extends Controller
 
         $cultivo_m = Cultivo::find($cultivo->id);
         $malezas = $cultivo_m->malezas()->get();
+        $malezas_all = Maleza::all();
 
 
 
         return view("cultivo.mostrar")
             ->with("cultivo", $cultivo)
-            ->with("semana", array($semana_actual,$semanas_total,$malezas));
+            ->with("semana", array($semana_actual,$semanas_total,$malezas,$malezas_all));
     }
 
     /**
