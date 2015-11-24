@@ -35,7 +35,7 @@
 
                             <ul >
                                 <li><strong> Maleza predominante:</strong> {!! $cultivo->maleza !!}</li>
-                                <li><strong>Activo:</strong> {!! $cultivo->activo !!}</li>
+                                <li><strong>Pre-emergente:</strong> {!! $cultivo->activo !!}</li>
                                 <li><strong>Aplicado:</strong> {!! $cultivo->fecha_activo !!}</li>
 
                             </ul>
@@ -57,7 +57,7 @@
                             @endif
 
                             @if($cultivo->fecha_inicio != "" && $cultivo->estado_cultivo == 1 )
-                            <a href="/cultivo/terminar/{!! $cultivo->id !!}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <a onclick="redirect('/cultivo/terminar/{!! $cultivo->id !!}')" href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                 TERMINAR
                             </a>
                             @endif
@@ -214,6 +214,14 @@
 
     for(var i = 1; i < n_semanas ;i++){
          $("#"+i).addClass("is-selected");
+    }
+
+
+    function redirect(url){
+        var confirmar = confirm("Esta seguro de que quiere terminar el cultivo");
+        if(confirmar){
+            $(location).attr('href',url);
+        }
     }
 
 

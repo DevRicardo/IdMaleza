@@ -32,7 +32,15 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--full-width">
             <select class="mdl-textfield__input" id="origen" name="origen">
                 <option value="">Seleccione el origen de la semilla</option>
-                <option value="LabCordoba S.A">LabCordoba S.A</option>
+
+                <option value="SYNGENTA SEEDS S.A.">SYNGENTA SEEDS S.A.</option>
+                <option value="AGRICOLA DE LA RIVA">AGRICOLA DE LA RIVA</option>
+                <option value="AGROQUÍMICOS EL SEMBRADOR">AGROQUÍMICOS EL SEMBRADOR</option>
+                <option value="COMERCIALIZADORA AGROFER">COMERCIALIZADORA AGROFER</option>
+                <option value="ACOSEMILLAS">ACOSEMILLAS</option>
+                <option value="IMPULSEMILLAS">IMPULSEMILLAS</option>
+                <option value="ABONOS Y SEMILLAS DEL MAIZ S.A.">ABONOS Y SEMILLAS DEL MAIZ S.A.</option>
+
             </select>
 
         </div>
@@ -40,6 +48,8 @@
             <select class="mdl-textfield__input" id="suelo" name="suelo">
                 <option value="">Seleccione el tipo de suelo</option>
                 <option value="Arenoso">Arenoso</option>
+                <option value="Arcilloso">Arcilloso</option>
+                <option value="Limoso">Limoso</option>
             </select>
 
         </div>

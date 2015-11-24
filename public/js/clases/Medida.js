@@ -3,7 +3,7 @@
  */
 var Medida = function(){
 
-    this.crear = function(id){
+    this.crear = function(id,maleza){
 
 
         var inputFileImage = $("#imagen_"+id);
@@ -18,6 +18,7 @@ var Medida = function(){
         data.append("semana_id",semana);
         data.append("activo",activo);
         data.append("observacion",observacion);
+        data.append("maleza",maleza);
 
         var controlador = "/medida";
         var url = controlador;

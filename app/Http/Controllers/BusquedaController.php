@@ -180,6 +180,16 @@ if(!empty($fotos[0])) {
 
     }
 
+    public function guiaAdmin(){
+
+        return view("busqueda.guia_admin");
+
+    }
+
+    public function guiaInvitado(){
+        return view("busqueda.guia_invitado");
+    }
+
 
     public function obtenerMayorPorcentaje(){
 

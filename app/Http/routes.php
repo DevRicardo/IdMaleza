@@ -50,6 +50,10 @@ Route::get("/busqueda", "BusquedaController@index");
 Route::post("/busqueda/all", "BusquedaController@buscar");
 Route::get("/busqueda", "BusquedaController@index");
 Route::get("/busqueda/detalle/{id}", "BusquedaController@show");
+Route::get("/busqueda/guiaAdmin", "BusquedaController@guiaAdmin");
+Route::get("/busqueda/guiaInvitado", "BusquedaController@guiaInvitado");
+
+
 
 
 

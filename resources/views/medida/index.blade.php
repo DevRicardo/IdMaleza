@@ -2,7 +2,9 @@
 
 @section("section")
 
-<?php $contador =1; ?>
+<?php $contador =1;
+$maleza = $parametros['maleza'];
+?>
 
 
 
@@ -10,7 +12,7 @@
 
     <?php
 
-    $medidas = \App\Medida::where("semana_id",$semana->id)->get();
+    $medidas = \App\Medida::where("semana_id",$semana->id)->where("maleza_id",$maleza->id)->get();
     $visible = "display: none;";
     $solo_lectura = "";
     $imagen = "";
@@ -24,6 +26,7 @@
         $imagen = $medidas[0]->foto_muestra;
         $activo = $medidas[0]->activo_aplicado;
         $observacion = $medidas[0]->comentario;
+
         $solo_lectura = "readonly";
         $disabled = "disabled='disabled'";
     }
@@ -92,7 +95,7 @@
                         TOMAR MEDIDA
                     </a>
 
-                    <button type="button" {!! $disabled !!} onclick=" medida.crear({!! $semana->id !!});" id="guardar_{!! $contador !!}" style="display: none;" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <button type="button" {!! $disabled !!} onclick=" medida.crear({!! $semana->id !!},{!! $maleza->id !!});" id="guardar_{!! $contador !!}" style="display: none;" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         GUARDAR
                     </button>
                 </div>

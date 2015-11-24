@@ -16,7 +16,7 @@
             <li><strong>Nombre cientifico:</strong>{!! $parametros["maleza"]->nombre_cientifico !!}</li>
             <li><strong>Nombre comun:</strong>{!! $parametros["maleza"]->nombre_comun !!}</li>
             <li><strong>Familia:</strong>{!! $parametros["maleza"]->familia !!}</li>
-            <li><strong>Desctipción:</strong>{!! $parametros["maleza"]->detalle !!}</li>
+            <li><strong>Descripción:</strong>{!! $parametros["maleza"]->detalle !!}</li>
 
             <li><strong>Activos aplicables</strong>
             <ul>

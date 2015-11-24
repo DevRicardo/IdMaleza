@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>.:IdMaleza:.</title>
+    <title>.:WEEDS:.</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -72,9 +72,9 @@
                 <i class="material-icons">more_vert</i>
             </button>
             <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                <li class="mdl-menu__item">Contacto</li>
-                <li class="mdl-menu__item">Ayuda</li>
-                <li class="mdl-menu__item">Información legal</li>
+
+                <li  class="mdl-menu__item"><a href="pdf/Manual_De_Usuario.pdf" target="__black">Ayuda</a> </li>
+
             </ul>
         </div>
     </header>

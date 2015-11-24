@@ -15,7 +15,7 @@
         <div class="mdl-card__supporting-text">
             Puede identificar por medio de una imagen el tipo de maleza,
             si quiere obtener el mejor resultado siga estas indicaciones
-            <a href="#" style="color: #004d40;">Guía para optimizar busqueda</a>
+            <a href="/busqueda/guiaInvitado" style="color: #004d40;">Guía para optimizar busqueda</a>
         </div>
 
 

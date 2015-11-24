@@ -33,7 +33,7 @@ class MedidaController extends Controller
 
 
 
-        return view("medida.index")->with("parametros",["semanas"=> $semanas, "activos"=>$activos]);
+        return view("medida.index")->with("parametros",["semanas"=> $semanas, "activos"=>$activos,"maleza"=>$maleza]);
     }
 
     /**
@@ -72,6 +72,7 @@ class MedidaController extends Controller
         $activo = $request->activo;
         $observacion = $request->observacion;
         $semana = $request->semana_id;
+        $maleza = $request->maleza;
 
         if($validar->fails()){
 
@@ -90,6 +91,7 @@ class MedidaController extends Controller
             $medida->activo_aplicado = $activo;
             $medida->comentario = $observacion;
             $medida->semana_id = $semana;
+            $medida->maleza_id = $maleza;
             $medida->save();
 
 

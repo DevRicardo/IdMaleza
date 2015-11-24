@@ -2,6 +2,7 @@
 
 @section("section")
 
+    @if(count($cultivos) > 0)
 
     @foreach($cultivos AS $cultivo)
     <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
@@ -34,6 +35,18 @@
     </div>
     @endforeach
 
+
+
+    @else
+        <div class="mdl-grid" style="margin-top: 30px;">
+            <div class="mdl-cell mdl-cell--8-col" ><h2>BIENVENIDO A</h2> </div>
+            <div class="mdl-cell mdl-cell--4-col">{!! Html::image('img/sistema/logo.png','Imagen no encontrada',array("style"=>"max-width: 300px"))!!}</div>
+
+        </div>
+
+
+
+    @endif
 
 @endsection
 

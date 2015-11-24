@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 
@@ -38,8 +39,8 @@ class CultivoController extends Controller
         if($historico == 1){
             $activo = 0;
         }
-
-        $cultivos = Cultivo::all()->where("estado_cultivo",$activo);
+        $id_usuario = Session::get("id");
+        $cultivos = Cultivo::all()->where("estado_cultivo",$activo)->where("usuario_id",$id_usuario);
         $incio_cultivo = "";
         $semanas_total = "";
         $semana_actual = "";
@@ -70,7 +71,8 @@ class CultivoController extends Controller
     public function create()
     {
         //
-        $cultivo = Cultivo::where("estado_cultivo",1)->get();
+        $id_usuario = Session::get("id");
+        $cultivo = Cultivo::where("estado_cultivo",1)->where("usuario_id",$id_usuario)->get();
         $id = "";
         foreach($cultivo AS $valor){
             $id = $valor->id;
@@ -151,7 +153,11 @@ class CultivoController extends Controller
     public function show($id)
     {
         //
-        $cultivos = Cultivo::find($id)->get();
+
+
+
+
+        $cultivos = Cultivo::find($id);
         $incio_cultivo = "";
         $semanas_total = "";
         $semana_actual = "";
@@ -160,11 +166,11 @@ class CultivoController extends Controller
 
 
 
-        foreach($cultivos AS $valor){
-            $incio_cultivo = $valor->fecha_inicio;
-            $cultivo = $valor;
 
-        }
+            $incio_cultivo = $cultivos->fecha_inicio;
+            $cultivo = $cultivos;
+
+
 
 
         if($incio_cultivo != ""){
@@ -173,7 +179,9 @@ class CultivoController extends Controller
 
         }
 
-        $cultivo_m = Cultivo::find($cultivo->id);
+        $cultivo_m = Cultivo::find($id);
+
+
         $malezas = $cultivo_m->malezas()->get();
         $malezas_all = Maleza::all();
 
@@ -266,6 +274,9 @@ class CultivoController extends Controller
 
 
     public function aplicar($id){
+
+
+
 
         $cultivo = Cultivo::find($id);
         $cultivo->fecha_activo = date("Y-m-d");

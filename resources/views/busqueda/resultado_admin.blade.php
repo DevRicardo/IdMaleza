@@ -27,7 +27,7 @@
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a href="/busqueda/detalle/{!! $index !!}?tipo=admin" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                            VER MAS IMAGENES
+                            VER MÁS INFORMACIÓN
                         </a>
                     </div>
 
@@ -43,7 +43,7 @@
 
 
 
-    <a href="/busqueda?tipo=invitado" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    <a href="/busqueda?tipo=admin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         REGRESAR
         </button>
     </a>
