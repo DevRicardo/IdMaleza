@@ -9,3 +9,4 @@ class Medida extends Model
     //
     protected $table = "medidas";
 }
+//
